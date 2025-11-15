@@ -1,0 +1,6 @@
+/* App-specific styles - Most styling is handled by Tailwind in index.css */
+
+#root {
+  min-height: 100vh;
+}
+
