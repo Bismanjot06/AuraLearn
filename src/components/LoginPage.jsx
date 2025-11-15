@@ -1,13 +1,38 @@
 import React, { useState } from 'react';
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = ({ onLogin, onShowSignup }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('teacher');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ email, role });
+    setError('');
+    
+    // Check if user exists in localStorage
+    const existingUsers = JSON.parse(localStorage.getItem('auralearn_users') || '[]');
+    const user = existingUsers.find(u => u.email.toLowerCase() === email.toLowerCase().trim());
+    
+    if (!user) {
+      setError('No account found with this email. Please sign up first.');
+      return;
+    }
+    
+    if (user.password !== password) {
+      setError('Incorrect password. Please try again.');
+      return;
+    }
+    
+    if (user.role !== role) {
+      setError(`This account is registered as a ${user.role}. Please select the correct role.`);
+      return;
+    }
+    
+    // Login successful
+    const userForLogin = { ...user };
+    delete userForLogin.password; // Don't store password in session
+    onLogin(userForLogin);
   };
 
   return (
@@ -63,6 +88,13 @@ const LoginPage = ({ onLogin }) => {
             />
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 text-red-400 text-sm">
+              {error}
+            </div>
+          )}
+
           {/* Role Selector */}
           <div>
             <label className="block text-sm font-medium mb-3 text-white/80">
@@ -106,9 +138,12 @@ const LoginPage = ({ onLogin }) => {
         {/* Footer Link */}
         <p className="text-center mt-6 text-white/50 text-sm">
           Don't have an account?{' '}
-          <a href="#" className="text-primary hover:text-primary-light transition-colors">
+          <button 
+            onClick={onShowSignup}
+            className="text-primary hover:text-accent transition-colors font-medium"
+          >
             Sign up
-          </a>
+          </button>
         </p>
       </div>
     </div>

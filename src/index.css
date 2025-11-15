@@ -11,9 +11,9 @@
 
   body {
     @apply m-0 p-0 font-sans antialiased;
-    @apply bg-[#0F0F1E];
+    @apply bg-dark;
     @apply text-white min-h-screen;
-    background: linear-gradient(to bottom right, #0F0F1E, #1A1A2E, #0F0F1E);
+    background: linear-gradient(to bottom right, #0A0A0F 0%, #141420 50%, #0A0A0F 100%);
   }
 
   html {
@@ -24,36 +24,42 @@
 @layer components {
   /* Glass Panel Effect */
   .glass-panel {
-    @apply bg-dark-card/80 backdrop-blur-xl border border-primary/20 rounded-2xl shadow-2xl;
+    @apply bg-dark-card/70 backdrop-blur-xl border border-white/5 rounded-2xl shadow-2xl;
+    box-shadow: 0 8px 32px 0 rgba(147, 51, 234, 0.1);
   }
 
   .glass-card {
-    @apply bg-dark-card/60 backdrop-blur-lg border border-primary/10 rounded-xl shadow-xl;
-    @apply transition-all duration-300 hover:bg-dark-card/80 hover:border-primary/20 hover:shadow-2xl;
+    @apply bg-dark-card/50 backdrop-blur-lg border border-white/5 rounded-xl shadow-xl;
+    @apply transition-all duration-300 hover:bg-dark-card/70 hover:border-primary/15 hover:shadow-2xl;
   }
 
   /* Gradient Buttons */
   .btn-primary {
     @apply px-6 py-3 rounded-xl font-semibold text-white;
-    @apply bg-gradient-to-r from-primary-dark to-accent;
-    @apply hover:from-primary hover:to-accent-light;
-    @apply transition-all duration-300 transform hover:scale-105;
-    @apply shadow-lg hover:shadow-primary/50;
+    @apply bg-primary;
+    @apply hover:bg-primary-light;
+    @apply transition-all duration-300 transform hover:scale-[1.02];
+    @apply shadow-lg hover:shadow-primary/30;
+    background: linear-gradient(135deg, #7E22CE 0%, #9333EA 100%);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #9333EA 0%, #A855F7 100%);
   }
 
   .btn-secondary {
     @apply px-6 py-3 rounded-xl font-semibold;
-    @apply bg-dark-card/60 backdrop-blur-md border border-primary/20;
-    @apply hover:bg-dark-card/80 hover:border-primary/30;
+    @apply bg-dark-card/50 backdrop-blur-md border border-white/10;
+    @apply hover:bg-dark-card/70 hover:border-primary/20;
     @apply transition-all duration-300;
   }
 
   /* Input Styles */
   .input-glass {
     @apply w-full px-4 py-3 rounded-xl;
-    @apply bg-dark-card/40 backdrop-blur-md border border-primary/20;
-    @apply text-white placeholder:text-white/40;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary;
+    @apply bg-dark-card/40 backdrop-blur-md border border-white/10;
+    @apply text-white placeholder:text-white/30;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60;
     @apply transition-all duration-300;
   }
 
@@ -84,15 +90,15 @@
     opacity: 0.3;
   }
 
-  /* Iridescent Text */
+  /* Premium Text */
   .text-iridescent {
-    @apply bg-gradient-to-r from-primary via-accent to-accent-light bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-light via-primary to-accent bg-clip-text text-transparent;
   }
 
   /* Hover Glow Effect */
   .hover-glow {
     @apply transition-all duration-300;
-    @apply hover:shadow-lg hover:shadow-primary/20;
+    @apply hover:shadow-lg hover:shadow-primary/15;
   }
 
   /* Stats Card */

@@ -10,7 +10,7 @@ const TeacherHome = () => {
   return (
     <div className="space-y-6">
       {/* Welcome Banner */}
-      <div className="glass-panel p-8 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/5 relative overflow-hidden">
+      <div className="glass-panel p-8 relative overflow-hidden">
         <div className="relative z-10">
           <h1 className="text-3xl md:text-4xl font-display font-bold mb-2">
             Welcome back, Teacher! 👋

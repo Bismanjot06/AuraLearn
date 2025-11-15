@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LoginPage from './components/LoginPage';
+import SignupPage from './components/SignupPage';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import TeacherHome from './components/TeacherHome';
@@ -13,6 +14,7 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('home');
+  const [showSignup, setShowSignup] = useState(false);
 
   const handleLogin = (userData) => {
     setUser(userData);
@@ -24,9 +26,22 @@ function App() {
     setActiveTab('home');
   };
 
-  // Login Page
+  // Login/Signup Page
   if (!user) {
-    return <LoginPage onLogin={handleLogin} />;
+    if (showSignup) {
+      return (
+        <SignupPage 
+          onSignup={handleLogin} 
+          onBackToLogin={() => setShowSignup(false)} 
+        />
+      );
+    }
+    return (
+      <LoginPage 
+        onLogin={handleLogin} 
+        onShowSignup={() => setShowSignup(true)} 
+      />
+    );
   }
 
   // Teacher Dashboard

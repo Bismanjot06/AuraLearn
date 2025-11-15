@@ -64,21 +64,24 @@ const QuizAttempt = () => {
   if (!quizStarted && !quizSubmitted) {
     return (
       <div className="min-h-[80vh] flex items-center justify-center">
-        <div className="glass-panel p-12 max-w-2xl text-center animate-scale-in">
-          <div className="text-6xl mb-6">📝</div>
-          <h1 className="text-4xl font-display font-bold mb-4">{quiz.title}</h1>
-          <p className="text-white/70 mb-2">
-            Test your knowledge with {quiz.questions.length} questions
-          </p>
-          <p className="text-white/50 text-sm mb-8">
-            ⏱️ Estimated time: 10 minutes
-          </p>
-          <button
-            onClick={() => setQuizStarted(true)}
-            className="btn-primary px-12 py-4 text-lg animate-glow"
-          >
-            Start Quiz
-          </button>
+        <div className="glass-panel p-12 max-w-2xl text-center animate-scale-in relative overflow-hidden">
+          <div className="relative z-10">
+            <div className="text-6xl mb-6">📝</div>
+            <h1 className="text-4xl font-display font-bold mb-4">{quiz.title}</h1>
+            <p className="text-white/70 mb-2">
+              Test your knowledge with {quiz.questions.length} questions
+            </p>
+            <p className="text-white/50 text-sm mb-8">
+              ⏱️ Estimated time: 10 minutes
+            </p>
+            <button
+              onClick={() => setQuizStarted(true)}
+              className="btn-primary px-12 py-4 text-lg"
+            >
+              Start Quiz
+            </button>
+          </div>
+          <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
         </div>
       </div>
     );
@@ -91,12 +94,15 @@ const QuizAttempt = () => {
 
     return (
       <div className="space-y-6">
-        <div className="glass-panel p-8 text-center bg-gradient-to-r from-primary/10 to-accent/10">
-          <div className="text-6xl mb-4">
-            {percentage >= 70 ? '🎉' : percentage >= 50 ? '👍' : '📚'}
+        <div className="glass-panel p-8 text-center relative overflow-hidden">
+          <div className="relative z-10">
+            <div className="text-6xl mb-4">
+              {percentage >= 70 ? '🎉' : percentage >= 50 ? '👍' : '📚'}
+            </div>
+            <h1 className="text-4xl font-display font-bold mb-2">Quiz Complete!</h1>
+            <p className="text-white/70">Here are your results</p>
           </div>
-          <h1 className="text-4xl font-display font-bold mb-2">Quiz Complete!</h1>
-          <p className="text-white/70">Here are your results</p>
+          <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
         </div>
 
         {/* Score Summary */}

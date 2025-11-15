@@ -8,19 +8,20 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#8B5CF6',
-          light: '#A78BFA',
-          dark: '#6D28D9',
+          DEFAULT: '#9333EA',
+          light: '#A855F7',
+          dark: '#7E22CE',
         },
         accent: {
-          DEFAULT: '#A855F7',
-          light: '#C084FC',
-          dark: '#7C3AED',
+          DEFAULT: '#C084FC',
+          light: '#D8B4FE',
+          dark: '#A855F7',
         },
         dark: {
-          DEFAULT: '#0F0F1E',
-          lighter: '#1A1A2E',
-          card: '#16162A',
+          DEFAULT: '#0A0A0F',
+          lighter: '#141420',
+          card: '#1A1A2E',
+          panel: '#0F0F1A',
         },
       },
       fontFamily: {
@@ -32,9 +33,10 @@ module.exports = {
         '2xl': '20px',
       },
       backgroundImage: {
-        'premium-gradient': 'linear-gradient(135deg, #6D28D9 0%, #8B5CF6 50%, #A855F7 100%)',
-        'glass': 'linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(168, 85, 247, 0.02))',
-        'dark-gradient': 'linear-gradient(to bottom right, #0F0F1E, #1A1A2E)',
+        'premium-gradient': 'linear-gradient(135deg, #7E22CE 0%, #9333EA 100%)',
+        'subtle-gradient': 'linear-gradient(135deg, #9333EA 0%, #A855F7 100%)',
+        'glass': 'linear-gradient(135deg, rgba(147, 51, 234, 0.03), rgba(168, 85, 247, 0.01))',
+        'dark-gradient': 'linear-gradient(to bottom right, #0A0A0F, #141420, #0A0A0F)',
       },
       backdropBlur: {
         xs: '2px',
@@ -49,8 +51,8 @@ module.exports = {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)' },
-          '100%': { boxShadow: '0 0 30px rgba(168, 85, 247, 0.5)' },
+          '0%': { boxShadow: '0 0 15px rgba(147, 51, 234, 0.2)' },
+          '100%': { boxShadow: '0 0 25px rgba(168, 85, 247, 0.35)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },

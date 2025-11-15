@@ -15,7 +15,7 @@ const Topbar = ({ userName = 'Teacher' }) => {
       {/* User Actions */}
       <div className="flex items-center gap-4">
         {/* Notifications */}
-        <button className="relative p-2 rounded-lg hover:bg-dark-card/60 transition-all duration-300">
+        <button className="relative p-2 rounded-lg hover:bg-dark-card/70 transition-all duration-300">
           <span className="text-xl">🔔</span>
           <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
         </button>

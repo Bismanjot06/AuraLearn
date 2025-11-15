@@ -42,13 +42,16 @@ const UploadQuiz = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="glass-panel p-6 bg-gradient-to-r from-primary/10 to-accent/10">
-        <h1 className="text-3xl font-display font-bold mb-2">
-          AI Quiz Generator ✨
-        </h1>
-        <p className="text-white/70">
-          Upload your syllabus and let AI create comprehensive quizzes instantly
-        </p>
+      <div className="glass-panel p-6 relative overflow-hidden">
+        <div className="relative z-10">
+          <h1 className="text-3xl font-display font-bold mb-2">
+            AI Quiz Generator ✨
+          </h1>
+          <p className="text-white/70">
+            Upload your syllabus and let AI create comprehensive quizzes instantly
+          </p>
+        </div>
+        <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
