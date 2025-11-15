@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LoginPage from './components/LoginPage';
+import SignupPage from './components/SignupPage';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import TeacherHome from './components/TeacherHome';
@@ -13,20 +14,31 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('home');
+  const [showSignup, setShowSignup] = useState(false);
 
   const handleLogin = (userData) => {
     setUser(userData);
     setActiveTab('home');
   };
 
-  const handleLogout = () => {
+  const handleSignup = (userData) => {
+    // For now, treat signup the same as login
+    // In production, this would create a new user account
+    setUser(userData);
+    setActiveTab('home');
+  };
+
+  const _handleLogout = () => {
     setUser(null);
     setActiveTab('home');
   };
 
-  // Login Page
+  // Login/Signup Page
   if (!user) {
-    return <LoginPage onLogin={handleLogin} />;
+    if (showSignup) {
+      return <SignupPage onSignup={handleSignup} onSwitchToLogin={() => setShowSignup(false)} />;
+    }
+    return <LoginPage onLogin={handleLogin} onSwitchToSignup={() => setShowSignup(true)} />;
   }
 
   // Teacher Dashboard
