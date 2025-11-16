@@ -6,34 +6,41 @@ const LoginPage = ({ onLogin, onShowSignup }) => {
   const [role, setRole] = useState('teacher');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError('');
-    
-    // Check if user exists in localStorage
-    const existingUsers = JSON.parse(localStorage.getItem('auralearn_users') || '[]');
-    const user = existingUsers.find(u => u.email.toLowerCase() === email.toLowerCase().trim());
-    
-    if (!user) {
-      setError('No account found with this email. Please sign up first.');
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError('');
+
+  try {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    let data;
+    try {
+      data = await response.json();
+    } catch (jsonErr) {
+      setError("Server error: Invalid response format.");
       return;
     }
-    
-    if (user.password !== password) {
-      setError('Incorrect password. Please try again.');
+
+    if (!response.ok) {
+      setError(data.msg || "Login failed. Please try again.");
       return;
     }
-    
-    if (user.role !== role) {
-      setError(`This account is registered as a ${user.role}. Please select the correct role.`);
-      return;
-    }
-    
-    // Login successful
-    const userForLogin = { ...user };
-    delete userForLogin.password; // Don't store password in session
-    onLogin(userForLogin);
-  };
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("role", data.user.role);
+    onLogin(data.user);
+  } catch (err) {
+    console.error("Login error:", err);
+    setError("Server not responding. Please try again later.");
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">

@@ -9,7 +9,9 @@ import TeacherAnalytics from './components/TeacherAnalytics';
 import StudentSidebar from './components/StudentSidebar';
 import StudentHome from './components/StudentHome';
 import QuizAttempt from './components/QuizAttempt';
+import StudentChatBot from './components/StudentChatBot';
 import './App.css';
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -76,6 +78,7 @@ function App() {
         <main className="ml-64 mt-16 p-8">
           {activeTab === 'home' && <StudentHome />}
           {activeTab === 'learning' && <QuizAttempt />}
+          {activeTab === 'chatbot' && <StudentChatBot />}
           {activeTab === 'quizzes' && (
             <div className="glass-card p-12 text-center">
               <div className="text-6xl mb-4 opacity-30">📝</div>
